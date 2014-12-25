@@ -1,0 +1,34 @@
+/* TRANSACTION VIEW */
+th { background-color:#ddd; } 
+table { border:0px; }
+
+/* Border styles */
+table td {border:1px #fff solid; margin:1px; background-color:#e6e6e6; padding:7px; font-weight:normal; }
+table th {border:0px; background-color:#777; padding:7px; font-weight:bold; color:#FFFFFF; }
+
+.container { margin-left:20px; }
+
+/* Status background color. */
+.status {background-color:#fff;}
+.alert {background-color:#F88;}
+.alert a{color:#EEE;}
+.alert a:hover{color:#FFFFFF;}
+.accepted {background-color:#FFCB4C;}
+.accepted a{color:#EEE;}
+.accepted a:hover{color:#FFFFFF;}
+.rejected {background-color:#AAA;}
+.completed {background-color:#66CC33;}
+
+/* User stats */
+.userstats {float:left; background-color:#fff; padding:5px; margin:5px; font-weight:bold; }
+.userstats div{ float:left; padding:5px; margin-right:6px; background-color:#fff; border:1px #aaa solid; color:#777; margin-top:10px; font-weight:normal; }
+.userstats div:first-line { font-weight:bold; color:#222; }
+.widget .userstats {float:left; padding:5px; margin:0px; background-color:transparent; font-weight:bold; }
+.widget .userstats div{ float:left; margin-right:6px; background-color:#777; color:#EEE; margin-top:7px; font-weight:normal; }
+.widget .userstats div:first-line { font-weight:bold; color:#FFF; }
+
+/* BUTTON */
+.button { background-color:#ccc; border:1px solid #eee; padding:8px; min-width:100px; max-width:150px; }
+
+/* FANCY BOX */
+.fancytitle { color:#333333; font-size:16px; font-weight:bold; }

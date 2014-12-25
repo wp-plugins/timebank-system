@@ -1,0 +1,10 @@
+/* ADMIN TIMEBANK STYLES */
+
+.timebank th { background-color:#ddd; } 
+.timebank table { border:0px; }
+.timebank table td {border:0px; background-color:#e6e6e6; padding:7px; font-weight:bold; }
+.timebank table th {border:0px; background-color:#666; padding:7px; font-weight:bold; color:#FFFFFF; }
+.timebank .explain {font-weight:normal; font-style:italic; color:#777; background-color:#eee; }
+
+.timebank .button { font-size:14px; }
+.timebank .button a { font-weight:bold; text-decoration:none;  }
