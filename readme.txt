@@ -14,9 +14,9 @@ The Wordpress timebank System. Exchange time between wordpress users securely.
 
 Link info: http://www.time-bank.info
 
-This plugin allows to exchange time between your wordpress users securely. Similar to a banking system!
+WordPress Timebank System is a Wordpress plugin that creates an exchange system (minutes, hours, tokens, any currency) for all your Wordpress users.
 
-Sidebar : Any registered user can see his balance on the sidebar (time in minutes), status, total transfers, total votes on transfers, alerts. You can also change your bank-time account info. timebank-sidebar
+All registered user can see their balance on the sidebar (time in minutes), status, total transfers. 
 
 By entering to the profile of any user you can see the list of exchanges of that user. 
 The status of transfers, rating and comments of each exchange. 
@@ -45,32 +45,41 @@ Sidebar with information of user, statistics, etc.
 Automatic mailing system when exchanges are created, accepted, rejected
 
 
-
 == Installation ==
 
-
-Wordpress Installation:
-
-    Once installed the plugin you can activate from your widget panel the sidebar called “Timebank -> Options”.
-    You have to create a page for the Timebank system adding this line of code in the content: [timebank_exchange]
-    COPY the absolute url of your timebank page that you just created and go to “Admin -> timebank -> Configuration”, and PASTE it on the first line “Absolute URL to your Timebank Page Path (Permalinked)”
-
-
-Wordpress + Buddypress Installation:
-
-    Once installed the plugin you can activate from your widget panel the sidebar called “Timebank -> Options”.
+Once installed the plugin you can activate from your widget panel the sidebar called “Timebank -> Options”.
+You have to create a page for the Timebank system adding this line of code in the content: [timebank_exchange]
+COPY the url of your timebank page that you just created and go to “Admin -> timebank -> Configuration”, and PASTE it on the first line “Absolute URL to your Timebank Page Path”
 
 Recommendations:
-
-    To improve SECURITY use of the plugin WP SSL to encrypt the information between client – server
-    Install the WP-SMTP plugin to guarantee a correct function of automatic email sending
-    We also recommend to install the 5 plugins that you can find at http://time-bank.info/demo/
-
+To improve SECURITY use of the plugin WP SSL to encrypt the information between client – server
+Install the WP-SMTP plugin to guarantee a correct function of automatic email sending
+We also recommend to install the 5 plugins that you can find at http://time-bank.info/demo/
 
 
 == Frequently Asked Questions ==
+ 
+The purpose of this timebank is to achieve an alternative and reliable exchange without money, but with time ;)
+We supose that the admins of the timebank will never win time (or money).
+But, if the admins want to win time because of their tasks, they can create a “manager” user for the timebank.
+This user have exactly the same characteristics as the other users.
+
+Actually, we do not consider to apply certain percentage to exchanges that could receive the “manager” user. (As normal banks does on money transactions)
+
+Is not possible for an administrator to alter the balance of any user. Therefore, the administrator can manage transactions but never modify the amounts.
+
+It’s important to understand that timebank is an exchange system but has no relation with the way your wordpress website promotes the use of timebank between users.
+In the WordPress demo page we have created a system where WordPress users can publish offers and demands in the front end page; but it’s only an example; not the timebank system.
+In the WordPress + BuddyPress demo you will find a better approach to a built-in timebank System because of buddyPress plugin system.
 
 == Screenshots ==
+front.png
+new_transfer.png
+sidebar.png
+backend.png
+backend-users.png
+backendconfig.png
+
 
 == Changelog ==
 
