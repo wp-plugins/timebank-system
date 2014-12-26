@@ -72,12 +72,12 @@ In the WordPress demo page we have created a system where WordPress users can pu
 In the WordPress + BuddyPress demo you will find a better approach to a built-in timebank System because of buddyPress plugin system.
 
 == Screenshots ==
-screenshot-1.png
-screenshot-2.png
-screenshot-3.png
-screenshot-4.png
-screenshot-5.png
-screenshot-6.png
+1. Front end - Home
+2. Front end - Request
+3. Front end - Sidebar
+4. Backend - Users
+5. Backend - Configuration
+6. Backend - Exchanges
 
 
 == Changelog ==
