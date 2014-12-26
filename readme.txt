@@ -16,12 +16,11 @@ Link info: http://www.time-bank.info
 
 WordPress Timebank System is a Wordpress plugin that creates an exchange system (minutes, hours, tokens, any currency) for all your Wordpress users.
 
-All registered user can see their balance on the sidebar (time in minutes), status, total transfers. 
+All registered user can see their balance on the sidebar, status and total transfers. 
 
-By entering to the profile of any user you can see the list of exchanges of that user. 
-The status of transfers, rating and comments of each exchange. 
-All users can rate and review the product or services. (Kind of eBay). 
-If you enter to your user profile, you can create new transfers, accept or reject transfers, comment and rate transfers.
+By entering to the profile of any user you can see the list of his exchanges, the status of transfers, rating and comments of each exchange. 
+All users can rate and review the product or services. 
+You can create new transfers, accept or reject incoming transfers, rate and comment transfers that affects you.
 
 
 == Features ==
