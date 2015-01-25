@@ -114,6 +114,9 @@ In the WordPress + BuddyPress demo you will find a better approach to a built-in
 * Fancybox removed. Native Wordpress lightbox applied (thickbox)
 * Backend minor fixes
 
+= 1.56 =
+* Fixes: Hook creation for new wordpress user or new wordpress install
+
 == Upgrade Notice ==
 
 = 1.5 =
