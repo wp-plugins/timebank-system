@@ -15,6 +15,7 @@ function timebank_install(){
 	include_once "admin/install.php"; 
 	jal_install();
 	jal_install_data();
+	timebankUserCreateLoop();
 }
 
 // UPDATE HOOK when plugin is updated / reactivated
@@ -24,16 +25,24 @@ function timebank_update(){
 	jal_install();
 }
 
+// UNINSTALL hook
 register_deactivation_hook(__FILE__,'timebank_uninstall');
 function timebank_uninstall(){
 	include_once "admin/install.php"; 
 	jal_uninstall();
 }
 
+// Save errors on log file
 add_action('activated_plugin','save_error');
 function save_error(){
 file_put_contents(plugin_dir_path( __FILE__ ). 'log_error_activation.txt', ob_get_contents());
 }	
+
+// Create user on Timebank database when wordpress user creation
+add_action('user_register','timebankUserCreate');
+function timebankUserCreate($user_id){
+	createUser($user_id);
+}
 
 // ADMIN SIDEBAR BUTTONS:
 add_action( 'admin_menu', 'my_plugin_menu' );

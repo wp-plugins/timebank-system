@@ -87,8 +87,6 @@ function jal_install() {
   min_limit int(4) NOT NULL,
   balance int(11) NOT NULL,
   status tinyint(4) NOT NULL,
-  phone varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  authcode varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   total_sell_transfers int(11) NOT NULL,
   total_buy_transfers int(11) NOT NULL,
   total_sell_positive_rating int(11) NOT NULL,
@@ -96,7 +94,7 @@ function jal_install() {
   total_buy_positive_rating int(11) NOT NULL,
   total_buy_negative_rating int(11) NOT NULL,
   alert tinyint(4) NOT NULL,
-  UNIQUE KEY fk_wpuser (fk_wpuser),
+  ADD INDEX fk_wpuser (fk_wpuser),
   PRIMARY KEY  (id),
   UNIQUE KEY id (id)
 );

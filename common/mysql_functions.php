@@ -108,7 +108,14 @@ function newAdminExchange ($sellerUserId, $buyerUserId, $amount, $description) {
 	}	
 }
 
-
+// Init function for full timebank table user creation
+function timebankUserCreateLoop(){
+	global $wpdb;
+	$result = $wpdb->get_results("SELECT ID FROM " . $wpdb->prefix . "users WHERE 1");
+	foreach ($result as $res){
+		createUser($res->ID);
+	}
+}
 
 function updateExchangeStatus($userId, $exchangeId, $status){
 	global $wpdb;
