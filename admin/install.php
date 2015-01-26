@@ -94,7 +94,7 @@ function jal_install() {
   total_buy_positive_rating int(11) NOT NULL,
   total_buy_negative_rating int(11) NOT NULL,
   alert tinyint(4) NOT NULL,
-  ADD INDEX fk_wpuser (fk_wpuser),
+  UNIQUE KEY fk_wpuser (fk_wpuser),
   PRIMARY KEY  (id),
   UNIQUE KEY id (id)
 );
