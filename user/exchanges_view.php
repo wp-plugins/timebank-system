@@ -1,4 +1,5 @@
 <div class="container">
+<div class="timebank">
 <?php
 // USER VIEW
 error_reporting( E_ERROR | E_WARNING | E_PARSE );
@@ -42,32 +43,28 @@ $config = getConfiguration();
 if(!isset($bp)){
 ?>
 
+
 <!-- SEARCH USERS (Shows if buddy not detected) -->
 <form method="post">
 	<input type="hidden" name="page" value="timebank" />
-	<p style="font-size:16px;"><strong>SEARCH USERS:</strong> 
-	<input type="text" name="username" placeholder="user name" width=20 value="<?php echo $username; ?>"> <input name="search" type="submit" value="SEARCH" />
-	<input name="reset" type="submit" value="RESET" />
+	<p style="font-size:16px;"><strong><?php _e( 'SEARCH USERS', 'timebank' ); ?>:</strong> 
+	<input type="text" name="username" placeholder="user name" width=20 value="<?php echo $username; ?>"> <input name="search" type="submit" value="<?php _e( 'SEARCH', 'timebank' ); ?>" />
+	<input name="reset" type="submit" value="<?php _e( 'RESET', 'timebank' ); ?>" />
 </form>
-
 <?php
 }
 
 	//SHOW USERS SEARCH
 	if ($result = showUsers($username)){
-                echo '<font style="font-size:24px;"><strong>Search results:</font><br />';
+                echo '<font style="font-size:24px;"><strong>' . __('Search results', 'timebank') . ':</font><br />';
 		echo "
 		<table>
-		<th>User</th>
-		<th>Created</th>
-		<th>Balance ($config->currency)</th>
-		<th>status</th>
-		<th>Total Sells</th>
-		<th>Total Buys</th>
-		<!--<th>Positive Sells</th>
-		<th>Negative Sells</th>
-		<th>Positive Buys</th>
-		<th>Negative Buys</th>-->
+		<th>" . __('User', 'timebank') . "</th>
+		<th>" . __('Created', 'timebank') . "</th>
+		<th>" . __('Balance', 'timebank') . " ($config->currency)</th>
+		<th>" . __('Status', 'timebank') . "</th>
+		<th>" . __('Total sales', 'timebank') . "</th>
+		<th>" . __('total buys', 'timebank') . "</th>
 		<tr>";
 		
 		foreach ($result as $res) {
@@ -94,13 +91,13 @@ if(!isset($bp)){
 	}elseif ($_POST['reset']){
 		echo "";
 	}elseif ($username!=""){
-                echo '<font style="font-size:24px;"><strong>Search results:</font><br />';
-		echo "User not found<br /><br />";
+                echo '<font style="font-size:24px;"><strong>' . __('Search results', 'timebank') . ':</font><br />';
+		echo __('User not found', 'timebank') . '<br /><br />';
                       
 	}
 	// END SEARCH	
 
-        // If user is not created in TBANK database create it!
+    // DEPRECATED -> If user is not created in TBANK database create it!
 	if (!$userData = getUserData ($userId)){
             if (createUser($userId)){
             echo 'Timebank user Created! (Refreshing...)';
@@ -110,45 +107,46 @@ if(!isset($bp)){
 
 	//SHOW USER STATS
 	if ($user && $userData){
-		echo '<font style="font-size:24px;"><strong>' . $user . '</strong> TimeBank stats</font><br />';
+		echo '<font style="font-size:24px;"><strong>' . $user . '</strong> ' . __('TimeBank stats', 'timebank') . '</font><br />';
 		echo "<div class=userstats>";
-			echo "<div>Balance:<br /> $userData->balance $config->currency </div>";
-                        echo "<div>User $config->currency limits:<br />Max: $userData->max_limit - Min: $userData->min_limit</div>";
-                        echo "<div>Status: <br />$userData->type</div>";  
-                        echo "<div>Totals Sells:<br /> $userData->total_sell_transfers</div>";
-                        echo "<div>Total Buys:<br /> $userData->total_buy_transfers</div>";
-                        //Future echo "<div>Sells Rating: <br />+ $userData->total_sell_positive_rating <br /> $userData->total_sell_negative_rating</div>";
-			//Future echo "<div>Purchase Rating: <br />+ $userData->total_buy_positive_rating <br /> $userData->total_buy_negative_rating</div>";
+			echo '<div>' . __('Balance', 'timebank') . ':<br />' . $userData->balance . ' ' . $config->currency . '</div>';
+				echo '<div>' . __('User', 'timebank') . ' ' . $config->currency_limits . ':<br /> ' . __('Max', 'timebank') . ': ' . $userData->max_limit . ' - ' . __('Min', 'timebank') . ': ' . $userData->min_limit . '</div>';
+				echo '<div>' . __('Status', 'timebank') . ': <br />' . $userData->type . '</div>';  
+				echo '<div>' . __('Totals Sells', 'timebank') . ':<br /> ' . $userData->total_sell_transfers . '</div>';
+				echo '<div>' . __('Total Buys', 'timebank') . ':<br /> ' . $userData->total_buy_transfers . '</div>';
 			echo '<div style="clear:both; padding:0px; margin:0px; border:0px;"></div>';				
 		echo '</div><div style="clear:both";></div><br />';
 	}else{
-		echo '<br /><br />You need to log to your Wordpress Account before using Timebank!';
+		echo '<br /><br />' . __('You need to log to your Wordpress Account before using Timebank!', 'timebank');
 	}
 
 	//print button NEW REQUEST if user is logged in
 	if (isWpUser()){ 
-            //print NEW REQUEST BUTTON + ajax function
-			echo '<a href="#TB_inline?width=460&height=330&inlineId=inline1" class="thickbox" title="" style="padding: 8px; background-color: #ddd; float:right; margin-right:10px;">NEW TIME REQUEST</a>';
-            include_once( plugin_dir_path( __FILE__ ) . 'new_request.php');
-            //print button ACCEPT / REJECT + ajax function
-            include_once( plugin_dir_path( __FILE__ ) . 'validate_transfer.php');
-            //print button COMMENT + ajax function
-            include_once( plugin_dir_path( __FILE__ ) . 'comment_transfer.php');
-	}
+	    
+		// PRINT NEW REQUEST BUTTON	
+		echo '<a href="#TB_inline?width=600&height=400&inlineId=showExchangeWindow" class="thickbox" style="padding: 8px; background-color: #ddd; float:right; margin-right:10px;">' . __('NEW EXCHANGE', 'timebank') . '</a>';
 
+		// INCLUDE NEW REQUEST html + js code	
+		include_once( 'new_exchange.php');
+		//print button ACCEPT / REJECT + ajax function
+		include_once( 'validate_transfer.php');
+		//print button COMMENT + ajax function
+		include_once( 'comment_transfer.php');
+	}
 
 //SHOW PURCHASE
 	$result = purchaseView ($userId);
 	
-	echo '<br /><br /><font style="font-size:16px;"><strong><!--' . $user. '--> Buys</strong></font>';
+	echo '<div class="buys">';
+	echo '<br /><br /><font style="font-size:16px;"><strong><!--' . $user. '--> ' . __('Buys', 'timebank') . '</strong></font>';
 	echo '<table style="background-color:#fff; width:99%;">';
-	echo "<th>Date</th>";
-	echo "<th>Seller</th>";	
-	echo "<th>Concept</th>";
-	echo "<th>$config->currency</th>";
-	echo "<th>Rating</th>";
-	echo "<th>Comment</th>";
-	echo "<th>Status</th>";
+	echo "<th>" . __('Date', 'timebank') . "</th>";
+	echo "<th>" . __('Seller', 'timebank') . "</th>";	
+	echo "<th>" . __('Concept', 'timebank') . "</th>";
+	echo "<th>" . $config->currency . "</th>";
+	echo "<th>" . __('Rating', 'timebank') . "</th>";
+	echo "<th>" . __('Comment', 'timebank') . "</th>";
+	echo "<th>" . __('Status', 'timebank') . "</th>";
 	echo "<tr>";
 
 
@@ -160,14 +158,11 @@ if(!isset($bp)){
 		echo "<td id=rating_value" . $res->id . "><div class=rateit data-rateit-value=" . $res->rating_value . " data-rateit-ispreset=true data-rateit-readonly=true></div></td>";
 		echo "<td id=rating_comment" . $res->id . ">" . $res->rating_comment . "</td>";
 
-		$validatePath= "validate_transfer.php?id=" . $res->id;
-		$commentPath= "comment_transfer.php?exchangeId=" . $res->id;
-		
 		//View $options if user is user viewer
 		if ($res->id_buyer == get_current_user_id()){ 
 
 			//Pending
-			if ($res->status == "1") { echo "<td id=status" . $res->id . " class=\"alert\">" . $res->type . "<br /><a id=". $res->id ." href=#TB_inline?width=460&height=250&inlineId=inline2 class=\"thickbox validate\">Accept / Reject</a>"; }
+			if ($res->status == "1") { echo "<td id=status" . $res->id . " class=\"alert\">" . $res->type . "<br />"; if ($res->id_buyer != $res->created_by) echo '<a id='. $res->id .' href=#TB_inline?width=460&height=250&inlineId=inline2 class="thickbox validate">Accept / Reject</a>'; }
 			//Accepted
 			if ($res->status == "2") { echo "<td id=status" . $res->id . " class=accepted>" . $res->type . "<br /><a id=". $res->id ." href=#TB_inline?width=460&height=320&inlineId=inline3 class=\"thickbox comment\">Comment</a>"; }	
 			//Completed
@@ -198,35 +193,57 @@ if(!isset($bp)){
 		echo "<tr>";
 	}
 	echo '</table>';
-	echo "<br /><br />";	
+	echo "</div><br /><br />";	
+	
 
 // SHOW SALES
 	$result = salesView ($userId);
 	
+	echo '<div class="sales">';
 	echo '<font style="font-size:16px;"><strong><!--' . $user . '--> Sales</strong></font>';
 	echo '<table style="background-color:#fff; width:99%;">';
-	echo "<th>Date</th>";
-	echo "<th>Buyer</th>";	
-	echo "<th>Concept</th>";
-	echo "<th>$config->currency</th>";
-	echo "<th>Rating</th>";
-	echo "<th>Comment</th>";
-	echo "<th>Status</th>";
+	echo "<th>" . __('Date', 'timebank') . "</th>";
+	echo "<th>" . __('Buyer', 'timebank') . "</th>";	
+	echo "<th>" . __('Concept', 'timebank') . "</th>";
+	echo "<th>" . $config->currency . "</th>";
+	echo "<th>" . __('Rating', 'timebank') . "</th>";
+	echo "<th>" . __('Comment', 'timebank') . "</th>";
+	echo "<th>" . __('Status', 'timebank') . "</th>";
 	echo "<tr>";
 
 	foreach ($result as $res) {
 	
-		echo "<td>" . $res->datetime_created . "</td>";	
-		echo "<td>" . $res->user_login . "</td>";	
-		echo "<td>" . $res->concept . "</td>";
-		echo "<td>" . $res->amount . "</td>";
+		echo "<td>" . $res->datetime_created . "</td>";
+		echo "<td id=user_value" . $res->id . "><!--<a href=" . $pathToTimebank . "?user=" . $res->user_login . ">-->" . $res->user_login . "</td>";	
+		echo "<td id=concept_value" . $res->id . ">" . $res->concept . "</td>";
+		echo "<td id=amount_value" . $res->id . ">" . $res->amount . "</td>";
 		echo "<td id=rating_value" . $res->id . "><div class=rateit data-rateit-value=" . $res->rating_value . " data-rateit-ispreset=true data-rateit-readonly=true></div></td>";
-		echo "<td>" . $res->rating_comment . "</td>";
-		echo "<td class=\"status\">" . $res->type . "</td>";
+		echo "<td id=rating_comment" . $res->id . ">" . $res->rating_comment . "</td>";
+
+		//View $options if user is user viewer
+		if ($res->id_seller == get_current_user_id()){ 
+			//Pending
+			if ($res->status == "1") { echo "<td id=status" . $res->id . " class=\"alert\">" . $res->type . "<br />"; if ($res->id_seller != $res->created_by) echo '<a id='. $res->id .' href=#TB_inline?width=460&height=250&inlineId=inline2 class="thickbox validate">Accept / Reject</a>'; 
+				echo "</td>";
+			}else{
+				//Accepted
+				if ($res->status == "2") { $options = "<td id=status" . $res->id . " class=accepted>" . $res->type; }
+				//Completed
+				if ($res->status == "3") { $options = "<td id=status" . $res->id . " class=completed>" . $res->type; }
+				//Rejected		
+				if ($res->status == "4") { $options = "<td id=status" . $res->id . " class=rejected>" . $res->type; }
+				//Cancelled
+				if ($res->status == "5") { $options = "<td id=status" . $res->id . " class=rejected>" . $res->type; }		
+
+			echo "$options</td>"; 
+			}
+		}
 		echo "<tr>";
 	}
 	echo '</table>';
-	echo "<br /><br />";
+	echo "</div><br /><br />";
 	
 ?>
+</div>
+ 
 </div>

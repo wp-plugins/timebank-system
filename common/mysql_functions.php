@@ -3,7 +3,7 @@
 // USER FUNCTIONS
 // userId always refers to Wordpress user Id.
 
-function newExchange ($sellerUserId, $buyerUserId, $amount, $description) {	
+function newExchange ($sellerUserId, $buyerUserId, $amount, $description, $createdBy) {	
 	global $wpdb;
 	
 	//Define show button acceptance
@@ -43,9 +43,9 @@ function newExchange ($sellerUserId, $buyerUserId, $amount, $description) {
 	// Exchange action	
 	if ($wpdb->query("INSERT INTO " . TBANK_EXCHANGE . " (id_seller, id_buyer, datetime_created, datetime_accepted, 
             datetime_finalized, datetime_denied, datetime_cancelled, concept, amount, status, rating_value, 
-            rating_comment) VALUES ($sellerUserId, $buyerUserId, now(), '0000-00-00 00:00:00', 
+            rating_comment, created_by) VALUES ($sellerUserId, $buyerUserId, now(), '0000-00-00 00:00:00', 
                 '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 
-                '$description', '$amount', '" . PENDING . "', 0, '')")){	
+                '$description', '$amount', '" . PENDING . "', 0, '', $createdBy)")){	
 		echo '<center><strong>Your transaction has been send</strong></center>
 			<!-- ON AJAX TRANSACTION END GO TO TIMEBANK PAGE -->
 			<script type="text/javascript">
@@ -117,12 +117,12 @@ function timebankUserCreateLoop(){
 	}
 }
 
-function updateExchangeStatus($userId, $exchangeId, $status){
+function updateExchangeStatus($exchangeId, $status){
 	global $wpdb;
         
         // UPDATE BALANCE IF TRANSFER ACCEPTED
         if ($status == ACCEPTED){
-            $result = $wpdb->get_results("SELECT * FROM " . TBANK_EXCHANGE . " WHERE id = '$exchangeId' LIMIT 1");
+            $result = $wpdb->get_results("SELECT id_seller, id_buyer, amount FROM " . TBANK_EXCHANGE . " WHERE id = '$exchangeId' LIMIT 1");
             foreach ($result as $res);
             updateBalance ($res->id_seller, $res->id_buyer, $res->amount);
             //Set Accept Time
@@ -132,7 +132,7 @@ function updateExchangeStatus($userId, $exchangeId, $status){
         
 	// UPDATE TO NEW STATUS IF REJECTED OR COMPLETED
         if ( $wpdb->query("UPDATE " . TBANK_EXCHANGE . " SET status = '$status' 
-        WHERE id = '$exchangeId' AND id_buyer = '$userId'")){
+        WHERE id = '$exchangeId'")){
             
             $statusName = getExchangeStatusName ($status);
             //Set Denied Time if Rejected
@@ -175,10 +175,10 @@ function rateExchange($exchangeId, $rate, $comment, $concept){
 
 function salesView ($userId){
 	global $wpdb;
-	$result = $wpdb->get_results("SELECT * FROM " . TBANK_EXCHANGE . " LEFT JOIN 
-	" . TBANK_EXCHANGE_STATUSTYPE . " ON " . TBANK_EXCHANGE . ".status = " . TBANK_EXCHANGE_STATUSTYPE . ".id 
-	LEFT JOIN " . $wpdb->prefix . "users ON " . TBANK_EXCHANGE . ".id_buyer = " . $wpdb->prefix . "users.ID 
-	WHERE id_seller = '$userId' ORDER BY " . TBANK_EXCHANGE . ".id DESC LIMIT 50");
+	$result = $wpdb->get_results("SELECT *, exchange.id FROM " . TBANK_EXCHANGE . " AS exchange LEFT JOIN 
+	" . TBANK_EXCHANGE_STATUSTYPE . " ON exchange.status = " . TBANK_EXCHANGE_STATUSTYPE . ".id
+	LEFT JOIN " . $wpdb->prefix . "users ON exchange.id_buyer = " . $wpdb->prefix . "users.ID 
+	WHERE id_seller = '$userId' ORDER BY exchange.id DESC LIMIT 50");
 	return $result;
 }
 

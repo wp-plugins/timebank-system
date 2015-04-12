@@ -5,10 +5,12 @@ Plugin Name: TimeBank
 Plugin URI: http://www.time-bank.info/
 Description: The timebank-sharing system for your wordpress users! Read install documentation on www.time-bank.info. <br /> Support us at <a href="https://www.teaming.net/wordpresstime-bank-bancodeltiempo">www.teaming.net</a>
 Author: Guillermo Tamborero
-Version: 1.56
+Version: 1.57
 Author URI: http://www.time-bank.info
 */
 
+define( 'TBPLUGIN_DIR', dirname(__FILE__).'/' );  
+ 
 // INSTALL HOOK when plugin is activated
 register_activation_hook(__FILE__,'timebank_install');
 function timebank_install(){
@@ -44,9 +46,11 @@ function timebankUserCreate($user_id){
 	createUser($user_id);
 }
 
+ 
+
 // ADMIN SIDEBAR BUTTONS:
-add_action( 'admin_menu', 'my_plugin_menu' );
-function my_plugin_menu() {
+add_action( 'admin_menu', 'timebank_menu' );
+function timebank_menu() {
 	add_menu_page( 'TimeBank', 'TimeBank', 'manage_options', 'timebank', 'timebank_exchanges' );
 	add_submenu_page( 'timebank', 'New Exchange', 'New Exchange', 'manage_options', 'timebank_newexchange', 'timebank_newexchange'); 
 	add_submenu_page( 'timebank', 'Users', 'Users', 'manage_options', 'timebank_users', 'timebank_users');      
@@ -124,10 +128,10 @@ function rateClass() {
 	echo '
 	<!-- Add RateIt Plugin Jquery -->
 	<script type="text/javascript" src="';
-	echo plugins_url( 'user/rateit/src/jquery.rateit.js', __FILE__ );
+	echo plugins_url( 'js/rateit/src/jquery.rateit.js', __FILE__ );
 	echo '"></script>
 	<link rel="stylesheet" type="text/css" href="';
-	echo plugins_url( 'user/rateit/src/rateit.css', __FILE__ );
+	echo plugins_url( 'js/rateit/src/rateit.css', __FILE__ );
 	echo '" media="screen" />';
 }
 
@@ -226,13 +230,22 @@ function timebank_exchange_view() {
 
 // ADD THICKBOX
 function add_themescript(){
-    if(!is_admin()){
     wp_enqueue_script('jquery');
     wp_enqueue_script('thickbox',null,array('jquery'));
-    wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
-    }
-     
+    wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');    
 }
 add_action('init','add_themescript');
 
+// TRANSLATION
+add_action( 'plugins_loaded', 'timebank_load_textdomain' );
+function timebank_load_textdomain() {
+  //load_plugin_textdomain( 'timebank' ); 
+  load_plugin_textdomain( 'timebank', false, dirname( plugin_basename( __FILE__ ) ) ); 
+}
+
+//function load_plugin_textdomain_timebank(){
+ // load_plugin_textdomain( 'timebank' );
+//}
+  //add_action('init', 'load_plugin_textdomain_timebank');
+  
 ?>

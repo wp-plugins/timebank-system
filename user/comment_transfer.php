@@ -1,10 +1,10 @@
         <div style="display: none;">
             <div id="inline3">
-                <div style="width:450px;">
+                <div style="width:100%;">
                     
-        <strong>EXCHANGE RATING</strong>
+        <strong><?php _e('EXCHANGE RATING', 'timebank'); ?></strong>
         <br />
-	<table id="status" width="420">
+	<table id="status" width="100%">
         <br /><div id="commentresult"></div>    
 	<td>Comment: </td><td><textarea id="comment2" name="comment2" maxlength="150" rows=3 style="resize: none; width:95%;" /></textarea> </td><tr>
 	<td>Rating: </td><td>

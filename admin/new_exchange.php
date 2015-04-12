@@ -24,6 +24,14 @@ if ($_POST['option']=="edit"){
 <!-- TIMEBANK STYLE INIT -->	
 <div class="timebank">
 
+		<?php
+		// PRINT NEW REQUEST BUTTON	
+		//echo '<a href="#TB_inline?width=600&height=400&inlineId=showExchangeWindow" class="thickbox" style="padding: 8px; background-color: #ddd; float:right; margin-right:10px;">' . __('NEW EXCHANGE', 'timebank') . '</a>';
+
+		// INCLUDE NEW REQUEST html + js code	
+		//include_once( plugin_dir_path( __FILE__ ) . '../user/new_exchange.php');
+		?>
+
 	<p style="font-size:20px;"><strong>TIME-BANK NEW EXCHANGE</strong></p>
 	<hr>
 	

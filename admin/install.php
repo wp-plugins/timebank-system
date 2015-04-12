@@ -3,7 +3,7 @@
 //FIRST INSTALL FILE 
 //Here we set up the TIME BANK DATABASE
 	
-$jal_db_version = "1.2";
+$jal_db_version = "1.33";
 $installed_ver = get_option( "jal_db_version" );
 //echo "VERS:" . $installed_ver ;
 
@@ -43,9 +43,11 @@ function jal_install() {
   status tinyint(4) NOT NULL,
   rating_value tinyint(4) NOT NULL,
   rating_comment varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  created_by INT NOT NULL,
   PRIMARY KEY  (id),
   UNIQUE KEY id (id)
 );
+ALTER TABLE $table_name ADD 'created_by' INT NOT NULL ;
 ";
 
    $table_name = $wpdb->prefix . "tbank_exchange_denegationtype";
@@ -118,6 +120,12 @@ function jal_install() {
 );
 ";
 
+
+	//$table_name = $wpdb->prefix . "tbank_exchange";
+	//$table9 = "ALTER TABLE $table_name ADD created_by INT NOT NULL;";
+
+
+	
    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
    dbDelta( $table1 );
    dbDelta( $table2 );
@@ -127,8 +135,9 @@ function jal_install() {
    dbDelta( $table6 );
    dbDelta( $table7 );
    dbDelta( $table8 ); 
+   dbDelta( $table9 );
  
-   add_option( "jal_db_version", $jal_db_version );
+update_option( "jal_db_version", $jal_db_version );
 }
 
 
@@ -199,8 +208,8 @@ function jal_uninstall() {
    global $wpdb;
    
    // DROP SUPPORT TABLES (not data)
-   $table_name = $wpdb->prefix . "tbank_conf";
-   $wpdb->query("DROP TABLE IF EXISTS $table_name");
+   //$table_name = $wpdb->prefix . "tbank_conf";
+   //$wpdb->query("DROP TABLE IF EXISTS $table_name");
    
    $table_name = $wpdb->prefix . "tbank_exchange_denegationtype";
    $wpdb->query("DROP TABLE IF EXISTS $table_name");
