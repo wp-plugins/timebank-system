@@ -47,7 +47,6 @@ function jal_install() {
   PRIMARY KEY  (id),
   UNIQUE KEY id (id)
 );
-ALTER TABLE $table_name ADD 'created_by' INT NOT NULL ;
 ";
 
    $table_name = $wpdb->prefix . "tbank_exchange_denegationtype";
@@ -120,11 +119,6 @@ ALTER TABLE $table_name ADD 'created_by' INT NOT NULL ;
 );
 ";
 
-
-	//$table_name = $wpdb->prefix . "tbank_exchange";
-	//$table9 = "ALTER TABLE $table_name ADD created_by INT NOT NULL;";
-
-
 	
    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
    dbDelta( $table1 );
@@ -135,7 +129,6 @@ ALTER TABLE $table_name ADD 'created_by' INT NOT NULL ;
    dbDelta( $table6 );
    dbDelta( $table7 );
    dbDelta( $table8 ); 
-   dbDelta( $table9 );
  
 update_option( "jal_db_version", $jal_db_version );
 }
@@ -208,8 +201,6 @@ function jal_uninstall() {
    global $wpdb;
    
    // DROP SUPPORT TABLES (not data)
-   //$table_name = $wpdb->prefix . "tbank_conf";
-   //$wpdb->query("DROP TABLE IF EXISTS $table_name");
    
    $table_name = $wpdb->prefix . "tbank_exchange_denegationtype";
    $wpdb->query("DROP TABLE IF EXISTS $table_name");
