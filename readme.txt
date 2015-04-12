@@ -117,6 +117,11 @@ In the WordPress + BuddyPress demo you will find a better approach to a built-in
 = 1.56 =
 * Fixes: Hook creation for new wordpress user or new wordpress install
 
+= 1.57 =
+* Posibility to Request or Send on the same window (new exchange)
+* Update: Language translation ready
+* CSS Improvements
+
 == Upgrade Notice ==
 
 = 1.5 =
