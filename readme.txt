@@ -122,6 +122,9 @@ In the WordPress + BuddyPress demo you will find a better approach to a built-in
 * Update: Language translation ready
 * CSS Improvements
 
+= 1.572 =
+* RateIt (stars) working again
+
 == Upgrade Notice ==
 
 = 1.5 =
