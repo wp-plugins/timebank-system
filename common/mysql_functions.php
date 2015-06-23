@@ -345,7 +345,7 @@ function exchangesView ($username = 0){
 function createUser($userId){
     global $wpdb;
     $conf = getConfiguration();	
-        if ($wpdb->query("INSERT INTO " . TBANK_USERS . " (fk_wpuser, datetime_created, max_limit, min_limit, status) VALUES ('$userId', now(), $conf->default_max_limit, $conf->default_min_limit, 1)")){
+        if ($wpdb->query("INSERT INTO " . TBANK_USERS . " (fk_wpuser, datetime_created, max_limit, min_limit, status, balance) VALUES ('$userId', now(), $conf->default_max_limit, $conf->default_min_limit, 1, $conf->starting_amount)")){
         return 1;
         }else{
         echo $mysqli->error;
@@ -439,6 +439,7 @@ function updateConfiguration(){
 	$defaultAnonymous   = $_POST['defaultanonymous'];
 	$defaultMaxLimit    = $_POST['defaultmaxlimit'];
 	$defaultMinLimit    = $_POST['defaultminlimit'];
+	$startingAmount    = $_POST['startingamount'];
 	$exchangeTimeout    = $_POST['exchangetimeout'];
     $adminMail          = $_POST['adminmail'];
     $emailText			= $_POST['emailtext'];		
@@ -457,6 +458,7 @@ function updateConfiguration(){
 	default_min_limit = '$defaultMinLimit', 
 	exchange_timeout='$exchangeTimeout', 
 	currency = '$currency',
+	starting_amount = '$startingAmount',
 	admin_mail = '$adminMail',
 	email_text = '$emailText' WHERE 1");
 	

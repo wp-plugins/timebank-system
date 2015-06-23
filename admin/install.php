@@ -21,6 +21,7 @@ function jal_install() {
   currency varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   path_to_timebank varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   admin_mail tinyint(1) NOT NULL,
+  starting_amount int(11) NOT NULL,
   email_original_text text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   email_text text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (id),
@@ -144,6 +145,7 @@ function jal_install_data() {
    $default_max_limit = "180";
    $currency = "minutes";
    $exchange_timeout = "48";
+   $starting_amount = "10";
    $admin_mail = "1";
    $path_to_timebank = "http://your-site.com/your-timebank-page";
    $email_original_text = 'Hello!
@@ -166,7 +168,7 @@ If you don\'t Accept within 48 hours the transfer will be automaticaly rejected.
 The $siteUrl Team.';
    
    $table_name = $wpdb->prefix . "tbank_conf";
-   $rows_affected = $wpdb->insert( $table_name, array( 'id' => $id, 'default_anonymous' => $default_anonymous, 'default_min_limit' => $default_min_limit, 'default_max_limit' => $default_max_limit, 'exchange_timeout' => $exchange_timeout, 'currency' => $currency, 'admin_mail' => $admin_mail, 'email_original_text' => $email_original_text,  'email_text' => $email_original_text, 'path_to_timebank' => $path_to_timebank ) );
+   $rows_affected = $wpdb->insert( $table_name, array( 'id' => $id, 'default_anonymous' => $default_anonymous, 'default_min_limit' => $default_min_limit, 'default_max_limit' => $default_max_limit, 'exchange_timeout' => $exchange_timeout, 'currency' => $currency, 'starting_amount' => $starting_amount, 'admin_mail' => $admin_mail, 'email_original_text' => $email_original_text,  'email_text' => $email_original_text, 'path_to_timebank' => $path_to_timebank ) );
 
    // INSERT DENEGATION TYPE
    $table_name = $wpdb->prefix . "tbank_exchange_denegationtype";

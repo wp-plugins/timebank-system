@@ -125,6 +125,9 @@ In the WordPress + BuddyPress demo you will find a better approach to a built-in
 = 1.572 =
 * RateIt (stars) working again
 
+= 1.58 =
+* Add funcionality: Admins can set the initial balance amount for new users.
+
 == Upgrade Notice ==
 
 = 1.5 =

@@ -44,7 +44,10 @@ $config = getConfiguration();
 		
 		<th> <?php _e('Currency name:', 'timebank'); ?></th> <td><input name="currency" type="text" value="<?php echo $config->currency; ?>" size="20" maxlength="20" /> </td>
 		<td class="explain"><?php _e('You can use the currency name or alias you like (Examples: min, hours, €, $, tokens ... )', 'timebank'); ?></td><tr />
-
+		
+		<th> <?php _e('Starting amount:', 'timebank'); ?></th> <td><input name="startingamount" type="text" value="<?php echo $config->starting_amount; ?>" size="10" maxlength="10" /> </td>
+		<td class="explain"><?php _e('The initial balance amount for every new user (It should be zero or a value near zero)', 'timebank'); ?></td><tr />
+		
 		<th> <?php _e('Send mail to Admin', 'timebank'); ?>:</th> <td><input type="radio" name="adminmail" value="1" <?php if ($config->admin_mail == '1') echo 'checked="checked"'; ?> > <?php _e('Yes', 'timebank'); ?> &nbsp; <input type="radio" name="adminmail" value="0" <?php if ($config->admin_mail == '0') echo 'checked="checked"'; ?> > <?php _e('No', 'timebank'); ?> </td>
 		<td class="explain"><?php _e('Activate / deactivate send mail to admin on all exchange status', 'timebank'); ?> (<?php _e('by default: allways send mail to admin'); ?>)</td><tr />
 
