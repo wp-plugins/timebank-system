@@ -1,0 +1,214 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TimeBank v1.56\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-07 00:53+0100\n"
+"PO-Revision-Date: 2015-03-08 12:26:39+0000\n"
+"Last-Translator: \n"
+"Language-Team: Guillermo <gtamborero@iproject.cat>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: C:/WEBS/tbtest/wp-content/plugins/timebank-system/admin\n"
+"X-Textdomain-Support: yes"
+
+#: admin/edit_configuration.php:17
+#@ timebank
+msgid "TIME-BANK GENERAL CONFIGURATION"
+msgstr "CONFIGURACIÓN GENERAL - BANCO DEL TIEMPO"
+
+#: user/comment_transfer.php:5
+#@ timebank
+msgid "EXCHANGE RATING"
+msgstr "VALORACIÓN"
+
+#: user/exchanges_view.php:48
+#@ timebank
+msgid "SEARCH USERS"
+msgstr "BUSCAR USUARIOS"
+
+#: timebank.php:69
+#: timebank.php:76
+#: timebank.php:83
+#: timebank.php:91
+#: timebank.php:98
+#: timebank.php:106
+#@ default
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: timebank.php:184
+#@ timebank
+msgid "TimeBank"
+msgstr ""
+
+#: admin/edit_configuration.php:24
+#@ timebank
+msgid "Timebank Page PATH"
+msgstr ""
+
+#: admin/edit_configuration.php:25
+#@ timebank
+msgid "Absolute URL to your Timebank Page Path"
+msgstr ""
+
+#: admin/edit_configuration.php:25
+#@ timebank
+msgid "Shortcode you have to insert into your page content:"
+msgstr ""
+
+#: admin/edit_configuration.php:27
+#@ default
+msgid "No existant users name"
+msgstr ""
+
+#: admin/edit_configuration.php:28
+#@ timebank
+msgid "This name is printed if a Wordpress user is eliminated from the System"
+msgstr ""
+
+#: admin/edit_configuration.php:28
+#@ timebank
+msgid "Timebank stores exchange data of unexistant users for security / integrity reasons"
+msgstr ""
+
+#: admin/edit_configuration.php:36
+#@ timebank
+msgid "Default Max Limit currency"
+msgstr ""
+
+#: admin/edit_configuration.php:37
+#: admin/edit_configuration.php:40
+#@ timebank
+msgid "Default exchange limit for new users"
+msgstr ""
+
+#: admin/edit_configuration.php:39
+#@ timebank
+msgid "Default Min Limit currency"
+msgstr ""
+
+#: admin/edit_configuration.php:42
+#@ timebank
+msgid "Exchange Timeout"
+msgstr ""
+
+#: admin/edit_configuration.php:43
+#@ timebank
+msgid "hours before an exchange Rejection occurs (will be working in v2)"
+msgstr ""
+
+#: admin/edit_configuration.php:45
+#@ timebank
+msgid "Currency name:"
+msgstr ""
+
+#: admin/edit_configuration.php:46
+#@ timebank
+msgid "You can use the currency name or alias you like (Examples: min, hours, €, $, tokens ... )"
+msgstr ""
+
+#: admin/edit_configuration.php:48
+#@ timebank
+msgid "Send mail to Admin"
+msgstr ""
+
+#: admin/edit_configuration.php:48
+#@ timebank
+msgid "Yes"
+msgstr ""
+
+#: admin/edit_configuration.php:48
+#@ timebank
+msgid "No"
+msgstr ""
+
+#: admin/edit_configuration.php:49
+#@ timebank
+msgid "Activate / deactivate send mail to admin on all exchange status"
+msgstr ""
+
+#: admin/edit_configuration.php:49
+#@ default
+msgid "by default: allways send mail to admin"
+msgstr ""
+
+#: admin/edit_configuration.php:51
+#@ default
+msgid "Text mail"
+msgstr ""
+
+#: admin/edit_configuration.php:52
+#@ timebank
+msgid "Configure as you like the mail text that will be send to all users every time an exchange occurs."
+msgstr ""
+
+#: admin/edit_configuration.php:53
+#@ timebank
+msgid "Be carefull with the \"variables\" / \"parameters\". If something goes wrong, copy and paste this original text:"
+msgstr ""
+
+#: admin/edit_configuration.php:57
+#@ timebank
+msgid "SAVE DATA"
+msgstr ""
+
+#: user/exchanges_view.php:49
+#@ timebank
+msgid "SEARCH"
+msgstr ""
+
+#: user/exchanges_view.php:50
+#@ timebank
+msgid "RESET"
+msgstr ""
+
+#: user/exchanges_view.php:57
+#: user/exchanges_view.php:92
+#@ timebank
+msgid "Search results"
+msgstr ""
+
+#: user/exchanges_view.php:60
+#@ timebank
+msgid "User"
+msgstr ""
+
+#: user/exchanges_view.php:61
+#@ timebank
+msgid "Created"
+msgstr ""
+
+#: user/exchanges_view.php:62
+#@ timebank
+msgid "Balance"
+msgstr ""
+
+#: user/exchanges_view.php:63
+#@ timebank
+msgid "Status"
+msgstr ""
+
+#: user/exchanges_view.php:64
+#@ timebank
+msgid "Total sales"
+msgstr ""
+
+#: user/exchanges_view.php:65
+#@ timebank
+msgid "total buys"
+msgstr ""
+
+#: user/exchanges_view.php:93
+#@ timebank
+msgid "User not found"
+msgstr ""
+

@@ -51,8 +51,8 @@ function timebankUserCreate($user_id){
 // ADMIN SIDEBAR BUTTONS:
 add_action( 'admin_menu', 'timebank_menu' );
 function timebank_menu() {
-	add_menu_page( 'TimeBank', 'TimeBank', 'manage_options', 'timebank', 'timebank_exchanges' );
-	add_submenu_page( 'timebank', 'New Exchange', 'New Exchange', 'manage_options', 'timebank_newexchange', 'timebank_newexchange'); 
+	add_menu_page( __('TimeBank' , 'timebank'), 'TimeBank', 'manage_options', 'timebank', 'timebank_exchanges' );
+	add_submenu_page( 'timebank', __('New Exchange' , 'timebank'), 'New Exchange', 'manage_options', 'timebank_newexchange', 'timebank_newexchange'); 
 	add_submenu_page( 'timebank', 'Users', 'Users', 'manage_options', 'timebank_users', 'timebank_users');      
 	add_submenu_page( 'timebank', 'Configuration', 'Configuration', 'manage_options', 'timebank_options', 'timebank_options'); 
 	// Timebank edit user must be here with 'null' property to have access to the admin page without a menu button
