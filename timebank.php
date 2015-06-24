@@ -5,7 +5,7 @@ Plugin Name: TimeBank
 Plugin URI: http://www.time-bank.info/
 Description: The timebank-sharing system for your wordpress users! Read install documentation on www.time-bank.info. <br /> Support us at <a href="https://www.teaming.net/wordpresstime-bank-bancodeltiempo">www.teaming.net</a>
 Author: Guillermo Tamborero
-Version: 1.58
+Version: 1.572
 Author URI: http://www.time-bank.info
 */
 
